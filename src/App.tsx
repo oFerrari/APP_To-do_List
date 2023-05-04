@@ -1,7 +1,6 @@
-import { Home } from './pages/Home/index'
-import './App.css'
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { dark } from '@mui/material/styles/createPalette';
+import { Home } from './pages/Home';
 
 const darkTheme = createTheme({
   palette: {
