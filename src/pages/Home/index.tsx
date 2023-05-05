@@ -2,7 +2,7 @@ import { AppBar, Badge, Button, Container, Grid, TextField, ThemeProvider, Toolb
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
 export function Home() {
-    
+
     return (
         <>
             <AppBar position='static'>
@@ -16,45 +16,46 @@ export function Home() {
                         minHeight: 200,
                     }
                 }}>
-                <Typography variant="h5" component="h1" sx={{
-                    display:'flex',
-                    alignItems:'center',
-                    gap:useTheme().spacing(2),
-                    color:useTheme().palette.primary.light
-                }}> <CheckFat size={32} weight="fill" /> To-do List</Typography>
+                    <Typography variant="h5" component="h1" sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: useTheme().spacing(2),
+                        color: useTheme().palette.primary.light
+                    }}> <CheckFat size={32} weight="fill" /> To-do List</Typography>
                 </Toolbar>
             </AppBar>
             <main>
                 <Container sx={{
-                    position:'relative',
+                    position: 'relative',
+                    marginTop: '50px'
                 }}>
                     <Grid container spacing={useTheme().spacing(0.5)} sx={{
-                        position:'absolute',
-                        top:'-28px'
+                        position: 'absolute',
+                        top: '-28px'
                     }}>
                         <Grid item xl={10} sm={12}>
                             <TextField placeholder="Adicione uma nova Tarefa" name="task" fullWidth sx={{
-                                backgroundColor:colors.grey[800]
-                            }}/>
+                                backgroundColor: colors.grey[800]
+                            }} />
                         </Grid>
+
                         <Grid item xl={2} sm={12}>
                             <Button variant="contained" fullWidth sx={{
-                                height:'100%'
+                                height: '100%'
                             }}><span>Criar</span><PlusCircle size={32} /></Button>
                         </Grid>
-                    </Grid>
-                    <Grid container spacing={useTheme().spacing(1)} sx={{
-                        marginTop:'25px'
-                    }}>
+
+                        <Grid container spacing={useTheme().spacing(1)} >
                             <Grid item>
                                 <Typography variant="caption" sx={{
-                                    display:'flex',
-                                    alignItems:'center',
-                                    gap:useTheme().spacing(3)
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: useTheme().spacing(3)
                                 }}>
-                                  <Badge color="primary" badgeContent={0} showZero> <span>Tarefas Criadas</span> </Badge>
+                                    <Badge color="primary" badgeContent={0} showZero> <span>Tarefas Criadas</span> </Badge>
                                 </Typography>
                             </Grid>
+                        </Grid>
                     </Grid>
                 </Container>
             </main>
