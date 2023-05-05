@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button, Container, Grid, TextField, ThemeProvider, Toolbar, Typography, colors, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
 export function Home() {
