@@ -6,7 +6,7 @@ export function Home() {
 
     return (
         <>
-        <CssBaseline />
+            <CssBaseline />
             <AppBar position='static'>
                 <Toolbar sx={{
                     paddingTop: useTheme().spacing(2),
@@ -51,12 +51,14 @@ export function Home() {
                         </Grid>
 
                         <Grid container spacing={useTheme().spacing(1)} sx={{
-                            marginTop: '25px'
+                            marginTop: '25px',
                         }}>
-                            <Grid item sx={{
-                                display:'flex',
-                                justifyContent:'space-between',
+                            <Grid item xs={10} sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
                                 gap: useTheme().spacing(3),
+                                flexWrap: 'wrap',
                             }}>
                                 <Typography variant="caption" sx={{
                                     display: 'flex',
@@ -68,14 +70,17 @@ export function Home() {
 
                                 </Typography>
                                 <Typography variant="caption" sx={{
-                                    display: 'flex',
+                                  
                                     alignItems: 'center',
+                                    display:'inline-flex',
                                     gap: useTheme().spacing(3),
                                 }}>
                                     <span>Concluidas</span>
-                                    <Badge color="primary" badgeContent={`${0} de ${5}` } showZero></Badge>
+                                    <Badge color="primary" badgeContent={
+                                        <span style={{ whiteSpace: 'nowrap',margin:'10px' }}>{`${0} de ${5}`}</span>
+                                    } showZero  sx={{ marginLeft: '15px'}}/>
                                 </Typography>
-                                    
+
                             </Grid>
                         </Grid>
                     </Grid>
