@@ -1,10 +1,12 @@
-import { AppBar, Badge, Button, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material/index";
+import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
 export function Home() {
 
     return (
         <>
+        <CssBaseline />
             <AppBar position='static'>
                 <Toolbar sx={{
                     paddingTop: useTheme().spacing(2),
@@ -21,7 +23,9 @@ export function Home() {
                         alignItems: 'center',
                         gap: useTheme().spacing(2),
                         color: useTheme().palette.primary.light
-                    }}> <CheckFat size={32} weight="fill" /> To-do List</Typography>
+                    }}> <CheckFat size={32} weight="fill" />
+                        <span>To-do List</span>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <main>
@@ -42,18 +46,36 @@ export function Home() {
                         <Grid item xl={2} sm={12}>
                             <Button variant="contained" fullWidth sx={{
                                 height: '100%'
-                            }}><span>Criar</span><PlusCircle size={32} /></Button>
+                            }}><span>Criar</span><PlusCircle size={32} />
+                            </Button>
                         </Grid>
 
-                        <Grid container spacing={useTheme().spacing(1)} >
-                            <Grid item>
+                        <Grid container spacing={useTheme().spacing(1)} sx={{
+                            marginTop: '25px'
+                        }}>
+                            <Grid item sx={{
+                                display:'flex',
+                                justifyContent:'space-between',
+                                gap: useTheme().spacing(3),
+                            }}>
                                 <Typography variant="caption" sx={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: useTheme().spacing(3)
                                 }}>
-                                    <Badge color="primary" badgeContent={0} showZero> <span>Tarefas Criadas</span> </Badge>
+                                    <span>Tarefas Criadas</span>
+                                    <Badge color="primary" badgeContent={0} showZero></Badge>
+
                                 </Typography>
+                                <Typography variant="caption" sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: useTheme().spacing(3),
+                                }}>
+                                    <span>Concluidas</span>
+                                    <Badge color="primary" badgeContent={`${0} de ${5}` } showZero></Badge>
+                                </Typography>
+                                    
                             </Grid>
                         </Grid>
                     </Grid>

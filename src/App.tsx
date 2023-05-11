@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { dark } from '@mui/material/styles/createPalette';
 import { Home } from './pages/Home';
 
@@ -11,12 +11,12 @@ const darkTheme = createTheme({
 
 function App() {
 
-  return (
+  return (<>
+    
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
       <Home />
     </ThemeProvider>
-    
+    </>
   )
 }
 
