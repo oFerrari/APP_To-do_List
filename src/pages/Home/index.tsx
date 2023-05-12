@@ -1,9 +1,19 @@
-import { AppBar, Badge, Button, ButtonBase, Checkbox, Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material/index";
+import { AppBar, Badge, Button, ButtonBase, Checkbox, Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
+import { Task } from "../../Types";
+import { useEffect, useState } from "react";
+
 //import { Dados } from "../../services/api";
 
 export function Home() {
+
+    const theme = useTheme()
+    const [task,setTasks] = useState<Task[]>
+
+    useEffect(()=>{
+
+    },[])
 
     return (
         <>
@@ -88,7 +98,9 @@ export function Home() {
                 </Container>
 
                 <hr />
+<article>
 
+</article>
                 <Container maxWidth="lg" sx={{ paddingTop: '20px', paddingBottom: '20px' }}>
                 <Grid container wrap="nowrap" spacing={2}>
                     <Grid container wrap="nowrap" spacing={2} alignItems="center">
@@ -104,9 +116,9 @@ export function Home() {
                             </IconButton>
                         </Grid>
                     </Grid>
-                    <ButtonBase sx={{ width: 128, height: 128 }}>
-                        {/* <Img alt="complex" src="/static/images/grid/complex.jpg" /> */}
-                    </ButtonBase>
+                    <IconButton aria-label="delete" size="large">
+        {/* //<DeleteIcon fontSize="inherit" /> */}
+      </IconButton>
                 </Grid>
     </Container>
 
