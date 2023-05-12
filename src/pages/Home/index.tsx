@@ -1,6 +1,7 @@
-import { AppBar, Badge, Button, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material/index";
+import { AppBar, Badge, Button, ButtonBase, Checkbox, Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material/index";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
+//import { Dados } from "../../services/api";
 
 export function Home() {
 
@@ -70,21 +71,48 @@ export function Home() {
 
                                 </Typography>
                                 <Typography variant="caption" sx={{
-                                  
+
                                     alignItems: 'center',
-                                    display:'inline-flex',
+                                    display: 'inline-flex',
                                     gap: useTheme().spacing(3),
                                 }}>
                                     <span>Concluidas</span>
                                     <Badge color="primary" badgeContent={
-                                        <span style={{ whiteSpace: 'nowrap',margin:'10px' }}>{`${0} de ${5}`}</span>
-                                    } showZero  sx={{ marginLeft: '15px'}}/>
+                                        <span style={{ whiteSpace: 'nowrap', margin: '10px' }}>{`${0} de ${5}`}</span>
+                                    } showZero sx={{ marginLeft: '15px' }} />
                                 </Typography>
 
                             </Grid>
                         </Grid>
                     </Grid>
                 </Container>
+
+                <hr />
+
+                <Container maxWidth="lg" sx={{ paddingTop: '20px', paddingBottom: '20px' }}>
+                <Grid container wrap="nowrap" spacing={2}>
+                    <Grid container wrap="nowrap" spacing={2} alignItems="center">
+                        <Grid item>
+                            <Checkbox color="primary" />
+                        </Grid>
+                        <Grid item xs>
+                            <Typography>tarefa</Typography>
+                        </Grid>
+                        <Grid item>
+                            <IconButton color="primary">
+                                ola
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                    <ButtonBase sx={{ width: 128, height: 128 }}>
+                        {/* <Img alt="complex" src="/static/images/grid/complex.jpg" /> */}
+                    </ButtonBase>
+                </Grid>
+    </Container>
+
+                
+
+
             </main>
         </>
     )
