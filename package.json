@@ -9,11 +9,12 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "node server.js",
-"server": "node server.js"
+    "server": "node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.0",
     "@phosphor-icons/react": "^2.0.9",
     "axios": "^1.4.0",

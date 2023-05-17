@@ -1,19 +1,22 @@
-import { AppBar, Badge, Button, ButtonBase, Checkbox, Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
+import { AppBar, Badge, Button,Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
-import { Task } from "../../Types";
+
+
+//import { Task } from "../../Types";
 import { useEffect, useState } from "react";
+import { CardList } from "../../components/CardList";
 
 //import { Dados } from "../../services/api";
 
 export function Home() {
 
-    const theme = useTheme()
-    const [task,setTasks] = useState<Task[]>
+    //const theme = useTheme()
+    //const [task, setTasks] = useState<Task[]>
 
-    useEffect(()=>{
+    useEffect(() => {
 
-    },[])
+    }, [])
 
     return (
         <>
@@ -97,32 +100,19 @@ export function Home() {
                     </Grid>
                 </Container>
 
-                <hr />
-<article>
 
-</article>
-                <Container maxWidth="lg" sx={{ paddingTop: '20px', paddingBottom: '20px' }}>
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid container wrap="nowrap" spacing={2} alignItems="center">
-                        <Grid item>
-                            <Checkbox color="primary" />
-                        </Grid>
-                        <Grid item xs>
-                            <Typography>tarefa</Typography>
-                        </Grid>
-                        <Grid item>
-                            <IconButton color="primary">
-                                ola
-                            </IconButton>
-                        </Grid>
-                    </Grid>
-                    <IconButton aria-label="delete" size="large">
-        {/* //<DeleteIcon fontSize="inherit" /> */}
-      </IconButton>
-                </Grid>
-    </Container>
+                <article>
 
-                
+                </article>
+                <Container maxWidth="lg" sx={{ paddingTop: '100px', paddingBottom: '20px' }}>
+                    <hr />
+
+                    <CardList />
+
+                </Container>
+
+
+
 
 
             </main>
