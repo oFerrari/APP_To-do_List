@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button,Container, Grid, IconButton, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
+import { AppBar, Badge, Button,Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
@@ -64,10 +64,10 @@ export function Home() {
                             </Button>
                         </Grid>
 
-                        <Grid container spacing={useTheme().spacing(1)} sx={{
+                        <Grid container xs={12} spacing={useTheme().spacing(1)} sx={{
                             marginTop: '25px',
                         }}>
-                            <Grid item xs={10} sx={{
+                            <Grid item xs={11} sx={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
