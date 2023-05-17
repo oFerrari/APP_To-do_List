@@ -3,10 +3,16 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteForeverSharp';
 import CheckButton from "../CheckButton";
 import { Task } from "../../Types";
 
-export function CardList(tasks: Task) {
-    
+type TasksProps ={
+    tasks : Task[],
+    inputValue: string;
+}
+
+export function CardList({tasks}: TasksProps) {
+
     return (
         <>
+        {tasks.map((task) => (
             <Grid container wrap="nowrap" spacing={2} sx={{ 
                 padding: '20px',
                 background:'#272727',
@@ -21,10 +27,7 @@ export function CardList(tasks: Task) {
                     <Grid item xs={10}>
                         <Typography variant="body2" noWrap>
 
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.,
-                            Dolores ex quo hic quibusdam impedit aspernatur veritatis
-                            perspiciatis, temporibus, quidem consectetur eligendi
-                            similique suscipit tempora magnam natus, totam nisi quasi sed.
+                            {task.description}
 
                         </Typography>
                     </Grid>
@@ -41,6 +44,7 @@ export function CardList(tasks: Task) {
 
                 
             </Grid>
+            ))}
         </>
     )
 }

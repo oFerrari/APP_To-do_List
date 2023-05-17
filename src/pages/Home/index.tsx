@@ -4,19 +4,41 @@ import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
 
 //import { Task } from "../../Types";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
+import { Task } from "../../Types";
 
 //import { Dados } from "../../services/api";
 
 export function Home() {
 
     //const theme = useTheme()
-    //const [task, setTasks] = useState<Task[]>
+    const [tasks, setTasks] = useState<Task[]>([])
+    const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
 
     }, [])
+
+    const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+      };
+
+    const handleCreateTask = () => {
+        const newTask = {
+          id: generateUniqueId(),
+          description: inputValue,
+          done: false,
+        };
+        setTasks((prevTasks:Task[]) => [...prevTasks, newTask]);
+        setInputValue('');
+      };
+
+      const generateUniqueId = (): number => {
+        // Lógica para gerar um ID único para a tarefa
+        // Implemente de acordo com a sua necessidade
+        return Math.floor(Math.random() * 1000);
+      };
 
     return (
         <>
@@ -52,13 +74,13 @@ export function Home() {
                         top: '-28px'
                     }}>
                         <Grid item xl={10} sm={12}>
-                            <TextField placeholder="Adicione uma nova Tarefa" name="task" fullWidth sx={{
+                            <TextField onChange={handleInputChange} placeholder="Adicione uma nova Tarefa" name="task" fullWidth sx={{
                                 backgroundColor: colors.grey[800]
                             }} />
                         </Grid>
 
                         <Grid item xl={2} sm={12}>
-                            <Button variant="contained" fullWidth sx={{
+                            <Button variant="contained" onChange={handleCreateTask} fullWidth sx={{
                                 height: '100%'
                             }}><span>Criar</span><PlusCircle size={32} />
                             </Button>
@@ -107,7 +129,7 @@ export function Home() {
                 <Container maxWidth="lg" sx={{ paddingTop: '100px', paddingBottom: '20px' }}>
                     <hr />
 
-                    <CardList />
+                    <CardList tasks={[]} inputValue={inputValue}/>
 
                 </Container>
 
