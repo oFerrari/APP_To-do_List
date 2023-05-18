@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button,Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, CircularProgress, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 
@@ -7,6 +7,7 @@ import { CheckFat, PlusCircle } from "@phosphor-icons/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { Task } from "../../Types";
+import { getAll } from "../../services/api";
 
 //import { Dados } from "../../services/api";
 
@@ -14,31 +15,37 @@ export function Home() {
 
     //const theme = useTheme()
     const [tasks, setTasks] = useState<Task[]>([])
+    const [isLoading, setIsLoading] = useState<Boolean>(false)
     const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
-
+        async function listTasks() {
+            setIsLoading(true)
+            setTasks(await getAll())
+            setIsLoading(false)
+        }
+        listTasks()
     }, [])
 
-    const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-      };
+    };
 
     const handleCreateTask = () => {
         const newTask = {
-          id: generateUniqueId(),
-          description: inputValue,
-          done: false,
+            id: generateUniqueId(),
+            description: inputValue,
+            done: false,
         };
-        setTasks((prevTasks:Task[]) => [...prevTasks, newTask]);
+        setTasks((prevTasks: Task[]) => [...prevTasks, newTask]);
         setInputValue('');
-      };
+    };
 
-      const generateUniqueId = (): number => {
+    const generateUniqueId = (): number => {
         // Lógica para gerar um ID único para a tarefa
         // Implemente de acordo com a sua necessidade
         return Math.floor(Math.random() * 1000);
-      };
+    };
 
     return (
         <>
@@ -124,17 +131,19 @@ export function Home() {
 
 
                 <article>
+                    <Container maxWidth="lg" sx={{ paddingTop: '100px', paddingBottom: '20px' }}>
+                        <hr />
 
+                        {isLoading ? (
+                            <CircularProgress />
+                        ) : (
+        
+                        <CardList tasks={tasks} />
+                        
+                        )}
+                       
+                    </Container>
                 </article>
-                <Container maxWidth="lg" sx={{ paddingTop: '100px', paddingBottom: '20px' }}>
-                    <hr />
-
-                    <CardList tasks={[]} inputValue={inputValue}/>
-
-                </Container>
-
-
-
 
 
             </main>
