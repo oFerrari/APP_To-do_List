@@ -1,8 +1,8 @@
 {
     "tasks": [
         {
-            "id":1,
-            "description" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita dolor quam beatae a ea repellendus velit iusto sequi eius ab vitae molestias autem illum ut alias, aspernatur tenetur perspiciatis odit.",
+            "id":3,
+            "description" : "",
             "done" : false
         },
         {

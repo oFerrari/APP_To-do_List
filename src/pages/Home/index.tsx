@@ -13,9 +13,8 @@ import { NoCardList } from "../../components/NoCardList";
 //import { Dados } from "../../services/api";
 
 export function Home() {
-
     //const theme = useTheme()
-    const [tasks, setTasks] = useState<Task[]>([])
+    const [tasks, setTasks] = useState<Task[]>([{ id: 1, description: 'teste' },])
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const [inputValue, setInputValue] = useState('');
 
@@ -28,19 +27,21 @@ export function Home() {
         listTasks()
     }, [])
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    /* const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-    };
+    }; */
 
     const handleCreateTask = () => {
-        event?.preventDefault();
+        //event?.preventDefault();
         const newTask = {
             id: generateUniqueId(),
             description: inputValue,
             done: false,
         };
-        setTasks((prevTasks: Task[]) => [...prevTasks, newTask]);
-        setInputValue('');
+        
+            setTasks([...tasks, newTask]);
+            setInputValue('');
+        
     };
 
     const generateUniqueId = (): number => {
@@ -66,8 +67,8 @@ export function Home() {
                     <Typography variant="h5" component="h1" sx={{
                         display: 'flex',
                         alignItems: 'center',
+                        color: useTheme().palette.primary.light,
                         gap: useTheme().spacing(2),
-                        color: useTheme().palette.primary.light
                     }}> <CheckFat size={32} weight="fill" />
                         <span>To-do List</span>
                     </Typography>
@@ -83,7 +84,9 @@ export function Home() {
                         top: '-28px'
                     }}>
                         <Grid item xl={10} sm={12}>
-                            <TextField onChange={handleInputChange} placeholder="Adicione uma nova Tarefa" name="task" fullWidth sx={{
+                            <TextField value={inputValue} onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                                setInputValue(event.target.value)
+                            }} placeholder="Adicione uma nova Tarefa" name="task" fullWidth sx={{
                                 backgroundColor: colors.grey[800]
                             }} />
                         </Grid>
@@ -108,22 +111,22 @@ export function Home() {
                                 <Typography variant="caption" sx={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    fontWeight:'bold',
-                                    color:'#52A8DE',
+                                    fontWeight: 'bold',
+                                    color: '#52A8DE',
                                     gap: useTheme().spacing(3),
-                                    fontSize:'15px'
+                                    fontSize: '15px'
                                 }}>
                                     <span>Tarefas Criadas</span>
                                     <Badge color="primary" badgeContent={0} showZero></Badge>
 
                                 </Typography>
                                 <Typography variant="caption" sx={{
-                                    color:'#9089FA',
-                                    fontWeight:'bold',
+                                    color: '#9089FA',
+                                    fontWeight: 'bold',
                                     alignItems: 'center',
                                     display: 'inline-flex',
                                     gap: useTheme().spacing(3),
-                                    fontSize:'14px'
+                                    fontSize: '14px'
                                 }}>
                                     <span>Concluidas</span>
                                     <Badge color="primary" badgeContent={
@@ -144,6 +147,7 @@ export function Home() {
                         {isLoading ? (
                             <CircularProgress />
                         ) : (
+
 
                             <CardList tasks={tasks} />
                             //<NoCardList />

@@ -13,6 +13,7 @@ export function CardList({ tasks }: TasksProps) {
         <>
 
             {tasks.map((task) => (
+                
                 <Grid container wrap="nowrap" spacing={1} sx={{
                     padding: '15px',
                     border: '0.5px solid #808080',
@@ -22,7 +23,7 @@ export function CardList({ tasks }: TasksProps) {
                     margin: '10px 0',
                     alignItems:'center'
                 }}>
-                  
+                  key={task.id}
 
                         <Grid item xs={1}>
                             <CheckButton label="" />
@@ -43,9 +44,6 @@ export function CardList({ tasks }: TasksProps) {
                             </IconButton>
 
                         </Grid>
-
-                   
-
 
                 </Grid>
             ))}
