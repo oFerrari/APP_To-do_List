@@ -12,31 +12,17 @@ export function CardList({ tasks }: TasksProps) {
     return (
         <>
 
-
-            <Grid container spacing={2} sx={{
-                padding: '20px',
-                border: '1px solid #fff',
-                background: '#272727',
-                borderRadius: '10px',
-                paddingBottom: '20px'
-            }}>
-
-
-
-
-           
-
-
-
             {tasks.map((task) => (
-                <Grid container wrap="nowrap" spacing={2} sx={{
-                    padding: '20px',
-                    border: '1px solid #fff',
+                <Grid container wrap="nowrap" spacing={1} sx={{
+                    padding: '15px',
+                    border: '0.5px solid #808080',
                     background: '#272727',
                     borderRadius: '10px',
-                    paddingBottom: '20px'
+                    paddingBottom: '20px',
+                    margin: '10px 0',
+                    alignItems:'center'
                 }}>
-                    <Grid container wrap="nowrap" spacing={4} alignItems="center">
+                  
 
                         <Grid item xs={1}>
                             <CheckButton label="" />
@@ -58,12 +44,12 @@ export function CardList({ tasks }: TasksProps) {
 
                         </Grid>
 
-                    </Grid>
+                   
 
 
                 </Grid>
             ))}
- </Grid>
+
         </>
     )
 }

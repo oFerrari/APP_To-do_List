@@ -8,6 +8,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { Task } from "../../Types";
 import { getAll } from "../../services/api";
+import { NoCardList } from "../../components/NoCardList";
 
 //import { Dados } from "../../services/api";
 
@@ -32,6 +33,7 @@ export function Home() {
     };
 
     const handleCreateTask = () => {
+        event?.preventDefault();
         const newTask = {
             id: generateUniqueId(),
             description: inputValue,
@@ -106,17 +108,22 @@ export function Home() {
                                 <Typography variant="caption" sx={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: useTheme().spacing(3)
+                                    fontWeight:'bold',
+                                    color:'#52A8DE',
+                                    gap: useTheme().spacing(3),
+                                    fontSize:'15px'
                                 }}>
                                     <span>Tarefas Criadas</span>
                                     <Badge color="primary" badgeContent={0} showZero></Badge>
 
                                 </Typography>
                                 <Typography variant="caption" sx={{
-
+                                    color:'#9089FA',
+                                    fontWeight:'bold',
                                     alignItems: 'center',
                                     display: 'inline-flex',
                                     gap: useTheme().spacing(3),
+                                    fontSize:'14px'
                                 }}>
                                     <span>Concluidas</span>
                                     <Badge color="primary" badgeContent={
@@ -137,11 +144,11 @@ export function Home() {
                         {isLoading ? (
                             <CircularProgress />
                         ) : (
-        
-                        <CardList tasks={tasks} />
-                        
+
+                            <CardList tasks={tasks} />
+                            //<NoCardList />
                         )}
-                       
+
                     </Container>
                 </article>
 
