@@ -146,9 +146,10 @@ export function Home() {
 
                         {isLoading ? (
                             <CircularProgress />
+                            
                         ) : (
 
-
+                            
                             <CardList tasks={tasks} />
                             //<NoCardList />
                         )}
