@@ -1,14 +1,11 @@
 import { AppBar, Badge, Button, CircularProgress, Container, Grid, TextField, Toolbar, Typography, colors, useTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { CheckFat, PlusCircle } from "@phosphor-icons/react";
-
-
 //import { Task } from "../../Types";
 import { ChangeEvent, useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { Task } from "../../Types";
-import { getAll } from "../../services/api";
-import { NoCardList } from "../../components/NoCardList";
+import { getAll, save } from "../../services/api";
 
 //import { Dados } from "../../services/api";
 
@@ -31,17 +28,21 @@ export function Home() {
         setInputValue(event.target.value);
     }; */
 
-    const handleCreateTask = () => {
-        //event?.preventDefault();
+    const handleSaveTask  = async(event: React.MouseEvent<HTMLButtonElement>) => {
+        event?.preventDefault();
         const newTask = {
             id: generateUniqueId(),
             description: inputValue,
             done: false,
         };
         
+        const taskSaved = await save(newTask)
+        setTasks((oldTasks:Task[]) => {return [...oldTasks, taskSaved]});
+        setInputValue('')
+            /* const taskSaved = await save(newTask)
             setTasks([...tasks, newTask]);
-            setInputValue('');
-        
+            setInputValue(''); 
+            ;*/
     };
 
     const generateUniqueId = (): number => {
@@ -92,7 +93,7 @@ export function Home() {
                         </Grid>
 
                         <Grid item xl={2} sm={12}>
-                            <Button variant="contained" onChange={handleCreateTask} fullWidth sx={{
+                            <Button variant="contained" onChange={handleSaveTask} fullWidth sx={{
                                 height: '100%'
                             }}><span>Criar</span><PlusCircle size={32} />
                             </Button>

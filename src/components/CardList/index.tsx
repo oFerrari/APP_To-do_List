@@ -2,6 +2,7 @@ import { Grid, IconButton, Typography } from "@mui/material";
 import CheckButton from "../CheckButton";
 import { Task } from "../../Types";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import { AlertDialog } from "../AlertDialog";
 
 type TasksProps = {
     tasks: Task[],
@@ -12,7 +13,7 @@ export function CardList({ tasks }: TasksProps) {
     return (
         <>
 
-            {tasks.map((task) => (
+            {tasks?.map((task) => (
                 
                 <Grid key={task.id} item xs={12} container wrap="nowrap" spacing={0} sx={{
                     padding: '15px',
@@ -25,8 +26,7 @@ export function CardList({ tasks }: TasksProps) {
                 }}>
 
                       
-
-                        <Grid item xs={12} sx={{display:'flex'}}>
+                        <Grid item xs={11} sx={{display:'flex'}}>
                            <Typography sx={{textAlign:'justify'}}>
                             <CheckButton label={task.description} />
                             </Typography>
@@ -35,7 +35,7 @@ export function CardList({ tasks }: TasksProps) {
 
                         <Grid item xs={1}>
 
-                            <IconButton aria-label="delete" size="large">
+                            <IconButton aria-label="delete" size="large" onClick={() => <AlertDialog />}>
                                 <DeleteOutlinedIcon />
                             </IconButton>
 
