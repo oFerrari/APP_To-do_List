@@ -18,7 +18,7 @@ const CheckButton: React.FC<CheckButtonProps> = ({ label }) => {
         {checked && <AiOutlineCheckCircle style={{ color: '#42A5F5', fontSize: '18px' }} />}
       </div>
       
-      {checked ? <s>{label}</s> : <span  style={{flexShrink: 100 }}>{label}</span>}
+      {checked ? <div style={{ textDecoration: 'line-through',padding:'12px' }}>{label}</div>  : <span  style={{flexShrink: 100, padding:'12px'}}>{label}</span>}
 
     </div>
   );
