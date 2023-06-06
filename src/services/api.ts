@@ -7,8 +7,8 @@ const api = axios.create({
 });
 
 export async function getAll() {
-    const tasks = await api.get(`tasks`)
-    return(tasks.data)
+    const response = await api.get('tasks')
+    return response.data
 }
 
 export async function getById(id:number) {

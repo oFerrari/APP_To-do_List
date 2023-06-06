@@ -28,21 +28,21 @@ export function Home() {
         setInputValue(event.target.value);
     }; */
 
-    const handleSaveTask  = async(event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSaveTask = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event?.preventDefault();
         const newTask = {
             id: generateUniqueId(),
             description: inputValue,
             done: false,
         };
-        
+
         const taskSaved = await save(newTask)
-        setTasks((oldTasks:Task[]) => {return [...oldTasks, taskSaved]});
+        setTasks((oldTasks: Task[]) => { return [...oldTasks, taskSaved] });
         setInputValue('')
-            /* const taskSaved = await save(newTask)
-            setTasks([...tasks, newTask]);
-            setInputValue(''); 
-            ;*/
+        /* const taskSaved = await save(newTask)
+        setTasks([...tasks, newTask]);
+        setInputValue(''); 
+        ;*/
     };
 
     const generateUniqueId = (): number => {
@@ -93,7 +93,7 @@ export function Home() {
                         </Grid>
 
                         <Grid item xl={2} sm={12}>
-                            <Button variant="contained" onChange={handleSaveTask} fullWidth sx={{
+                            <Button variant="contained" onClick={handleSaveTask} fullWidth sx={{
                                 height: '100%'
                             }}><span>Criar</span><PlusCircle size={32} />
                             </Button>
@@ -147,10 +147,9 @@ export function Home() {
 
                         {isLoading ? (
                             <CircularProgress />
-                            
+
                         ) : (
 
-                            
                             <CardList tasks={tasks} />
                             //<NoCardList />
                         )}
