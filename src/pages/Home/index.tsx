@@ -11,7 +11,7 @@ import { getAll, save } from "../../services/api";
 
 export function Home() {
     //const theme = useTheme()
-    const [tasks, setTasks] = useState<Task[]>([{ id: 1, description: 'teste' },])
+    const [tasks, setTasks] = useState<Task[]>([])
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const [inputValue, setInputValue] = useState('');
 
